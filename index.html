@@ -1,121 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IJA Miami</title>
-  <meta name="description" content="Welcome to IJA Miami.">
-  <style>
-    :root {
-      --bg: #fffaf3;
-      --surface: #ffffff;
-      --text: #1d2433;
-      --muted: #5b6475;
-      --accent: #e4572e;
-      --border: #ece3d6;
-      color-scheme: light;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #12151c;
-        --surface: #1a1f29;
-        --text: #f1f3f7;
-        --muted: #a0a8b8;
-        --accent: #ff7a52;
-        --border: #2a313f;
-        color-scheme: dark;
-      }
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.25rem 0;
-    }
-    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: .02em; }
-    .logo span { color: var(--accent); }
-    nav a {
-      margin-left: 1.25rem; color: var(--muted);
-      text-decoration: none; font-weight: 500;
-    }
-    nav a:hover { color: var(--accent); }
-    .hero { padding: 5rem 0 4rem; text-align: center; }
-    .hero h1 {
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-      line-height: 1.1; margin: 0 0 1rem;
-    }
-    .hero p { max-width: 34rem; margin: 0 auto 2rem; color: var(--muted); font-size: 1.15rem; }
-    .btn {
-      display: inline-block; padding: .8rem 1.6rem; border-radius: 999px;
-      background: var(--accent); color: #fff; text-decoration: none; font-weight: 600;
-    }
-    .btn:hover { filter: brightness(1.08); }
-    section { padding: 3rem 0; }
-    h2 { font-size: 1.75rem; margin: 0 0 1.5rem; }
-    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.5rem;
-    }
-    .card h3 { margin: 0 0 .5rem; }
-    .card p { margin: 0; color: var(--muted); }
-    footer {
-      border-top: 1px solid var(--border); margin-top: 3rem;
-      padding: 2rem 0; text-align: center; color: var(--muted); font-size: .9rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="IJA Miami: prayer, programs, membership, giving and community services for the Islamic Jaffaria Association in South Florida.">
+  <meta property="og:title" content="IJA Miami | Our community, in one place">
+  <meta property="og:description" content="Faith, connection and care for Miami's Shia Muslim community.">
+  <link rel="icon" href="./assets/ija-symbol.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/ija-icon-192.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./config.js" defer></script>
+  <script src="./app.js" defer></script>
+  <title>IJA Miami | Our community, in one place</title>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">IJA <span>Miami</span></div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#events">Events</a>
-        <a href="#contact">Contact</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a href="#top" class="brand" aria-label="IJA Miami home">
+        <svg viewBox="0 0 44 44" width="34" height="34" aria-hidden="true"><path d="M22 3 28 16 41 22 28 28 22 41 16 28 3 22 16 16Z" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M22 11 26 18 33 22 26 26 22 33 18 26 11 22 18 18Z" fill="currentColor"/></svg>
+        <span class="brand-wordmark"><strong>IJA</strong><small>MIAMI</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#events">What's on</a>
+        <a href="#services">Services</a>
+        <a href="#connect">Watch & connect</a>
       </nav>
-    </header>
-
-    <main>
-      <div class="hero">
-        <h1>Welcome to IJA Miami</h1>
-        <p>A new home on the web for our community. More coming soon.</p>
-        <a class="btn" href="#contact">Get in touch</a>
+      <div class="header-side">
+        <button class="header-give" type="button" data-zeffy="donation">Give to IJA <span aria-hidden="true">↗</span></button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
       </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden>
+      <a href="#events">What's on</a>
+      <a href="#services">Services</a>
+      <a href="#support">Membership & giving</a>
+      <a href="#connect">Watch & connect</a>
+      <a href="https://www.ijamiami.org/contact-us" target="_blank" rel="noopener noreferrer">Contact the center</a>
+    </nav>
+  </header>
 
-      <section id="about">
-        <h2>About</h2>
-        <div class="card">
-          <p>Tell visitors who you are, what you do, and why it matters. Replace this paragraph with your story.</p>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-inner">
+        <div class="hero-content">
+          <p class="overline">Islamic Jaffaria Association · South Florida</p>
+          <h1 id="hero-title">Our community,<br><span>in one place.</span></h1>
+          <p class="hero-subtitle">Prayer, programs, and care for Miami's Shia Muslim community.</p>
+          <div class="hero-links">
+            <a class="solid-button" href="#pathways">Explore the hub <span aria-hidden="true">↗</span></a>
+            <a class="quiet-link" href="https://www.google.com/maps/search/?api=1&amp;query=10554+NW+132nd+St+Hialeah+Gardens+FL+33018" target="_blank" rel="noopener noreferrer">Visit the center <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-      </section>
+        <div class="hero-art" aria-hidden="true"><div class="arch arch-outer"><div class="arch arch-middle"><div class="arch arch-inner"></div></div></div><span class="arch-caption">FAITH · FAMILY · SERVICE</span></div>
+      </div>
+    </section>
 
-      <section id="events">
-        <h2>Events</h2>
-        <div class="grid">
-          <div class="card"><h3>Event one</h3><p>Date, time and location go here.</p></div>
-          <div class="card"><h3>Event two</h3><p>Date, time and location go here.</p></div>
-          <div class="card"><h3>Event three</h3><p>Date, time and location go here.</p></div>
+    <section class="prayer-strip" aria-label="Friday prayer information">
+      <div class="shell prayer-inner">
+        <div class="prayer-summary"><span class="prayer-symbol" aria-hidden="true">✳</span><strong>Friday at IJA</strong><span class="prayer-dot" aria-hidden="true">·</span><span>Khutba 1:30 PM</span><span class="prayer-dot" aria-hidden="true">·</span><span>Salat 1:50 PM</span></div>
+        <a href="https://www.ijamiami.org/namaz-timings" target="_blank" rel="noopener noreferrer">All prayer times <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="pathways shell section-space" id="pathways" aria-labelledby="pathways-title">
+      <div class="section-aside"><p class="overline">Welcome</p><h2 id="pathways-title">How can we<br>help you today?</h2><p>Find what you need without searching through pages.</p></div>
+      <div class="pathway-list">
+        <a class="pathway" href="#events"><span class="pathway-number">01</span><span class="pathway-copy"><strong>Events & gatherings</strong><small>Programs, calendars and RSVPs</small></span><span class="pathway-arrow" aria-hidden="true">↗</span></a>
+        <button class="pathway" type="button" data-zeffy="membership"><span class="pathway-number">02</span><span class="pathway-copy"><strong>Become a member</strong><small>Join or renew through Zeffy</small></span><span class="pathway-arrow" aria-hidden="true">↗</span></button>
+        <a class="pathway" href="#support"><span class="pathway-number">03</span><span class="pathway-copy"><strong>Give or sponsor</strong><small>Donations and community programs</small></span><span class="pathway-arrow" aria-hidden="true">↗</span></a>
+        <a class="pathway" href="#services"><span class="pathway-number">04</span><span class="pathway-copy"><strong>Community services</strong><small>Marriage, funerals and family support</small></span><span class="pathway-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section-alt" id="events" aria-labelledby="events-title">
+      <div class="shell events-layout section-space">
+        <div class="section-aside"><p class="overline">Community calendar</p><h2 id="events-title">What's on at IJA</h2><p>Gather for worship, learning and time together.</p></div>
+        <div class="events-content">
+          <div class="event-feed" id="event-feed" aria-live="polite"></div>
+          <div class="event-footer">
+            <a class="text-arrow" href="https://www.ijamiami.org/new-events-1" target="_blank" rel="noopener noreferrer">View the full calendar <span aria-hidden="true">↗</span></a>
+            <button class="text-arrow" type="button" data-zeffy="eventRsvp">Event registration <span aria-hidden="true">↗</span></button>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="card">
-          <p>Email: <a href="mailto:hello@example.com" style="color:var(--accent)">hello@example.com</a></p>
+    <section class="services shell section-space" id="services" aria-labelledby="services-title">
+      <div class="section-aside"><p class="overline">Care and guidance</p><h2 id="services-title">Here when<br>it matters.</h2><p>Support for life's important moments.</p></div>
+      <div class="service-list">
+        <article class="service"><div><h3>Nikah & marriage</h3><p>Religious marriage services and guidance on next steps.</p></div><a class="service-link" href="https://www.ijamiami.org/contact-us" target="_blank" rel="noopener noreferrer">Enquire <span aria-hidden="true">↗</span></a></article>
+        <article class="service"><div><h3>Funeral & burial</h3><p>Burial guidance, cemetery information and family assistance.</p><a class="urgent-link" href="tel:+17865542694">Urgent assistance: (786) 554-2694</a></div><a class="service-link" href="https://www.ijamiami.org/cemetery" target="_blank" rel="noopener noreferrer">Learn more <span aria-hidden="true">↗</span></a></article>
+        <article class="service"><div><h3>Youth & learning</h3><p>Faith, education and activities for families.</p></div><a class="service-link" href="https://www.ijamiami.org/contact-us" target="_blank" rel="noopener noreferrer">Contact IJA <span aria-hidden="true">↗</span></a></article>
+      </div>
+    </section>
+
+    <section class="support" id="support" aria-labelledby="support-title">
+      <div class="shell support-layout section-space">
+        <div class="support-intro"><p class="overline">A shared responsibility</p><h2 id="support-title">Help our community<br>thrive.</h2><p>Membership and giving help sustain IJA's programs, services and future.</p></div>
+        <div class="support-actions">
+          <button type="button" data-zeffy="membership">Join or renew membership <span aria-hidden="true">↗</span></button>
+          <button type="button" data-zeffy="donation">Make a donation <span aria-hidden="true">↗</span></button>
+          <button type="button" data-zeffy="sponsor">Sponsor a program <span aria-hidden="true">↗</span></button>
+          <p>Memberships, gifts and event registrations are handled by Zeffy once the IJA campaign links are connected.</p>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer>&copy; 2026 IJA Miami</footer>
+    <section class="connect shell section-space" id="connect" aria-labelledby="connect-title">
+      <div><p class="overline">Beyond the center</p><h2 id="connect-title">Stay connected.</h2><p>Watch majalis and lectures, and follow community announcements.</p></div>
+      <div class="connect-links"><a id="youtube-link" href="https://www.youtube.com/results?search_query=IJA+Miami+Islamic+Jaffaria+Association" target="_blank" rel="noopener noreferrer">Find IJA on YouTube <span aria-hidden="true">↗</span></a><a id="facebook-link" href="https://www.facebook.com/p/Islamic-Jaffaria-Association-IJA-Miami-100064573394767/" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a><a id="instagram-link" href="#connect" hidden>Instagram <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner"><div><strong class="footer-brand">IJA MIAMI</strong><p>10554 NW 132nd Street<br>Hialeah Gardens, FL 33018</p></div><div class="footer-links"><a href="https://www.google.com/maps/search/?api=1&amp;query=10554+NW+132nd+St+Hialeah+Gardens+FL+33018" target="_blank" rel="noopener noreferrer">Directions ↗</a><a href="tel:+13055576835">(305) 557-6835</a><a href="https://www.ijamiami.org/contact-us" target="_blank" rel="noopener noreferrer">Contact us ↗</a></div></div>
+    <div class="shell footer-bottom"><span>© <span id="copyright-year">2026</span> Islamic Jaffaria Association Miami</span><span>Design prototype · Zeffy campaign links pending</span></div>
+  </footer>
+
+  <div class="dialog-backdrop" id="zeffy-dialog" hidden>
+    <div class="dialog-panel" role="dialog" aria-modal="true" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Close dialog">×</button>
+      <p class="overline">IJA · Zeffy setup</p><h2 id="dialog-title">Link not connected</h2><p id="dialog-description">The Zeffy link for this action is not connected in this preview.</p><p class="dialog-instructions">Add IJA's public campaign URL to <code>config.js</code> to activate this action. Do not add private API credentials.</p>
+      <button class="solid-button" id="dialog-done" type="button">Back to IJA <span aria-hidden="true">↗</span></button>
+    </div>
   </div>
 </body>
 </html>
