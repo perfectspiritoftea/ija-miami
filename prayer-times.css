@@ -1,0 +1,18 @@
+/* Minimal prayer times module, compatible with the IJA Miami editorial design. */
+.ija-prayer-times{background:#efeee7;border-top:1px solid #d8ddd6;border-bottom:1px solid #d8ddd6;color:#192b24}
+.ija-prayer-inner{max-width:1160px;margin:0 auto;padding:27px clamp(24px,4.8vw,56px) 24px;font-family:'DM Sans',Arial,sans-serif}
+.ija-prayer-heading{display:flex;justify-content:space-between;align-items:center;gap:15px 25px;margin-bottom:19px}
+.ija-prayer-eyebrow{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64736b;margin:0 0 6px}
+.ija-prayer-heading h2{font:400 clamp(26px,3vw,36px)/1.15 'Newsreader',Georgia,serif;letter-spacing:-.035em;margin:0}
+.ija-prayer-date{color:#64736b;font-size:12px;margin:6px 0 0}
+.ija-prayer-next{color:#1d493d;font-size:12px;font-weight:700;text-align:right}
+.ija-prayer-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.ija-prayer-cell{display:flex;flex-direction:column;justify-content:center;gap:7px;min-width:0;min-height:95px;padding:15px 12px;background:#fffefa;border:1px solid #d8ddd6}
+.ija-prayer-cell-next{background:#1d493d;border-color:#1d493d;color:#fff}
+.ija-prayer-name{font-size:12px;font-weight:600}
+.ija-prayer-time{font-size:clamp(15px,1.8vw,20px);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ija-prayer-tag{font-size:10px;letter-spacing:.01em;color:#d9e8dc}
+.ija-prayer-note{font-size:11px;color:#64736b;margin:13px 0 0}
+.ija-prayer-note a{color:#1d493d;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:800px){.ija-prayer-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:440px){.ija-prayer-heading{align-items:flex-start;flex-direction:column}.ija-prayer-next{text-align:left}.ija-prayer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ija-prayer-cell{min-height:83px}.ija-prayer-time{font-size:18px}}
