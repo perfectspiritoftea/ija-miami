@@ -35,7 +35,7 @@ jobs:
       - name: Assemble static website
         run: |
           mkdir -p public
-          cp index.html events.html donate.html public/
+          cp index.html events.html donate.html cemetery.html public/
           cp styles.css app.js calendar.js fundraising.js config.js events.json public/
           cp zeffy-thermometer.html manifest.webmanifest service-worker.js public/
           cp -R assets public/assets
