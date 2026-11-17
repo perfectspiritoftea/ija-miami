@@ -6,7 +6,7 @@
  */
 window.IJA_CONFIG = {
   zeffy: {
-    membership: '"https://www.zeffy.com/en-US/ticketing/ija-annual-fees"',         // Zeffy public membership form
+    membership: 'https://www.zeffy.com/en-US/ticketing/ija-annual-fees',         // Zeffy public membership form
     donation: '',           // Zeffy public donation form with a fundraising goal
     sponsor: '',            // General sponsor form (event-specific links take priority)
     eventRsvp: '',          // Optional generic RSVP form
