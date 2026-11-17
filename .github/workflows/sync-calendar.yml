@@ -36,8 +36,7 @@ jobs:
         run: |
           mkdir -p public
           cp index.html events.html donate.html cemetery.html membership.html public/
-          cp styles.css app.js calendar.js config.js events.json public/
-          cp manifest.webmanifest service-worker.js public/
+          cp styles.css site-shell.js app.js calendar.js config.js events.json public/
           cp -R assets public/assets
           touch public/.nojekyll
       - name: Configure GitHub Pages
