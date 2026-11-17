@@ -5,7 +5,6 @@
  * Google Calendar is synced by GitHub Actions using GOOGLE_CALENDAR_ICS_URL.
  */
 window.IJA_CONFIG = {
-  zeffy: { membership: 'https://www.zeffy.com/en-US/ticketing/ija-annual-fees' },
   calendar: {
     // Optional. Link for visitors to open IJA's PUBLIC Google Calendar.
     publicUrl: 'https://calendar.google.com/calendar/u/0?cid=YzJiZGM1YWM2NWRlZTBjYmE5ZGQ4MDljZDliYWYxZTE5MWI4NjdmMmI4MzFlNTYyNTZlNGM1OTZjZDc5NmEzZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t',

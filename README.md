@@ -1,16 +1,31 @@
-# IJA Miami community hub — membership integration
+# IJA Miami community website
 
-This version adds a dedicated `membership.html` page with the official Zeffy annual fees embed and its iframe fallback. It removes all other unconfigured Zeffy buttons, thermometers and setup dialogs. Event-specific Zeffy RSVP or sponsorship links will only appear if a verified Zeffy URL is present in a Google Calendar event.
+Static GitHub Pages website. Shared navigation and footer live in `site-shell.js`. Page-specific content remains in the five HTML pages.
 
-## Deploy
-Upload all files to the GitHub repository root, including `.github/workflows/sync-calendar.yml`. GitHub Pages must use **GitHub Actions** as its publishing source. Trigger the workflow or commit to `main`. The workflow includes `membership.html` in the published artifact.
+## Pages
 
-## Membership
-Public form: https://www.zeffy.com/en-US/ticketing/ija-annual-fees
-Embedded in `membership.html` using Zeffy's official v2 embed script with iframe fallback. The form can also be opened directly if third-party scripts are blocked. No Zeffy API keys are used.
+- `index.html`: Home
+- `events.html`: Calendar feed and next-event countdown
+- `donate.html`: Giving information (no unconfigured Zeffy forms)
+- `membership.html`: IJA annual membership, with the supplied Zeffy embed
+- `cemetery.html`: Cemetery records and maps
 
-## Other giving forms
-No general donation, fundraising thermometer, or sponsorship placeholders are published. Those can be added when actual Zeffy campaign links and embeds are provided.
+## Deployment
 
-## Calendar
-Keep the existing GitHub Actions secret `GOOGLE_CALENDAR_ICS_URL`. The scheduled calendar sync is unchanged.
+Upload all files including `.github/workflows/sync-calendar.yml` to the repository root. In GitHub Pages choose **GitHub Actions**. Add repository secret `GOOGLE_CALENDAR_ICS_URL` with the public Google Calendar iCal feed. Run the workflow. It generates `events.json` and deploys the site.
+
+The site does not require a Node build or npm. `site-shell.js` is required for navigation/footer. Keep `assets/ija-symbol.svg`.
+
+## Integrations
+
+- Google Calendar: `scripts/sync_calendar.py` generates `events.json` on schedule.
+- Zeffy: The only active form is the official annual membership embed in `membership.html`. Event-specific RSVP/sponsorship actions appear only if valid Zeffy URLs are included in Google Calendar event descriptions.
+- Donations: No unconfigured Zeffy widgets or fake thermometer are shown.
+
+## Caching
+
+An old service worker caused risk of stale pages. The new site unregisters old service workers and relies on normal browser caching.
+
+## Verification
+
+Check the GitHub Actions deployment and visit `/events.json`, `/events.html`, `/membership.html` and `/cemetery.html` on the published site. The Zeffy embed and live calendar require online verification.

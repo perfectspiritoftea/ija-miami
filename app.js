@@ -1,7 +1,6 @@
 /* Shared navigation, social links and safe Zeffy actions. */
 (() => {
   const config = window.IJA_CONFIG || {};
-  const zeffy = config.zeffy || {};
   window.IJA = window.IJA || {};
   window.IJA.isZeffyUrl = (value) => {
     try {
@@ -46,7 +45,7 @@
     } catch (_) {}
   }
   document.querySelectorAll('#copyright-year').forEach(node => node.textContent = new Date().getFullYear());
-  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-    window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(reg => reg.unregister())).catch(() => {});
   }
 })();
