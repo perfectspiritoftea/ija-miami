@@ -1,98 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta content="#f8f7f2" name="theme-color"/>
-<meta content="IJA Miami community hub: upcoming Google Calendar events, event countdowns, Zeffy donations and sponsorships, prayer and family services." name="description"/>
-<meta content="IJA Miami | Our community, in one place" property="og:title"/>
-<meta content="Gather, give and stay connected with IJA Miami." property="og:description"/>
-<link href="./assets/ija-symbol.svg" rel="icon" type="image/svg+xml"/>
-<link rel="stylesheet" href="./prayer-times.css">
-
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
-<link href="./styles.css" rel="stylesheet"/>
-<script defer="" src="./config.js"></script>
-<script defer="" src="./app.js"></script><script defer="" src="./calendar.js"></script>
-<title>IJA Miami | Our community, in one place</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="IJA Miami community hub. Today's Jafari prayer times in Miami, upcoming programs, membership, and community services.">
+  <meta property="og:title" content="IJA Miami | Our community, in one place">
+  <meta property="og:description" content="Prayer, programs and care for Miami's Shia Muslim community.">
+  <title>IJA Miami | Our community, in one place</title>
+  <link rel="icon" href="./assets/ija-symbol.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./prayer-times.css">
+  <script defer src="./config.js"></script>
+  <script defer src="./app.js"></script>
+  <script defer src="./calendar.js"></script>
+  <script defer src="./prayer-times.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<div id="site-header"></div>
-<main id="main">
-<section aria-labelledby="hero-title" class="hero">
-<div class="shell hero-inner">
-<div class="hero-content">
-<p class="overline">Islamic Jaffaria Association · South Florida</p>
-<h1 id="hero-title">A place to gather.<br/><span>A place to belong.</span></h1>
-<p class="hero-subtitle">Prayer, community events and care for Miami’s Shia Muslim families.</p>
-<div class="hero-links">
-<a class="solid-button" href="./events.html">Explore events <span aria-hidden="true">↗</span></a>
-<a class="quiet-link" href="./membership.html">Become a member ↗</a>
-</div>
-</div>
-<div aria-hidden="true" class="hero-art"><div class="arch arch-outer"><div class="arch arch-middle"><div class="arch arch-inner"></div></div></div></div>
-</div>
-</section>
-<section aria-label="Friday prayer information" class="prayer-strip">
-<div class="shell prayer-inner">
-<div class="prayer-summary"><span aria-hidden="true" class="prayer-symbol">✳</span><strong>Friday at IJA</strong><span aria-hidden="true" class="prayer-dot">·</span><span>Khutba 1:30 PM</span><span aria-hidden="true" class="prayer-dot">·</span><span>Salat 1:50 PM</span></div>
-<a href="https://www.ijamiami.org/namaz-timings" rel="noopener noreferrer" target="_blank">All prayer times <span aria-hidden="true">↗</span></a>
-</div>
-</section><section aria-labelledby="next-event-label" class="next-feature">
-<div class="shell next-feature-inner" data-next-event="">
-<div class="next-feature-copy">
-<p class="overline">Our next gathering</p>
-<h2 data-next-title="" id="next-event-label">Upcoming events at IJA</h2>
-<p data-next-meta="">Explore the full calendar for our next community program.</p>
-<div class="next-feature-links"><a href="./events.html">See all events <span aria-hidden="true">↗</span></a>
-</div>
-</div>
-<div class="countdown-wrap" data-countdown-wrap="" hidden="">
-<span class="countdown-caption">Begins in</span>
-<div aria-label="Time to next event" aria-live="off" class="countdown-line" data-countdown="" role="timer">—</div>
-</div>
-</div>
-</section>
-<section aria-labelledby="pathways-title" class="pathways shell section-space" id="pathways">
-<div class="section-aside"><p class="overline">Welcome</p><h2 id="pathways-title">How can we<br/>help you?</h2><p>Find what you need without searching through pages.</p></div>
-<div class="pathway-list">
-<a class="pathway" href="./events.html"><span class="pathway-number">01</span><span class="pathway-copy"><strong>Events &amp; gatherings</strong><small>Programs, calendars and RSVPs</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
-<a class="pathway" href="./membership.html"><span class="pathway-number">02</span><span class="pathway-copy"><strong>Become a member</strong><small>Join or renew through Zeffy</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
-<a class="pathway" href="./cemetery.html"><span class="pathway-number">03</span><span class="pathway-copy"><strong>Cemetery records &amp; maps</strong><small>Find burial records and cemetery maps</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
-<a class="pathway" href="#services"><span class="pathway-number">04</span><span class="pathway-copy"><strong>Community services</strong><small>Marriage, funerals and family support</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
-</div>
-</section>
-<section aria-labelledby="events-title" class="section-alt" id="events">
-<div class="shell events-layout section-space">
-<div class="section-aside"><p class="overline">Google Calendar</p><h2 id="events-title">Coming together.</h2><p>See what is planned and reserve a place at upcoming programs.</p></div>
-<div class="events-content">
-<div aria-live="polite" class="event-feed" data-calendar-feed="" data-limit="3">
-<div class="event-placeholder"><strong>Explore upcoming events</strong><p>See the latest schedule in the IJA community calendar.</p><a class="text-arrow" href="https://calendar.google.com/calendar/u/0?cid=YzJiZGM1YWM2NWRlZTBjYmE5ZGQ4MDljZDliYWYxZTE5MWI4NjdmMmI4MzFlNTYyNTZlNGM1OTZjZDc5NmEzZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" rel="noopener noreferrer" target="_blank">Open calendar ↗</a></div>
-</div>
-<div class="event-footer"><a class="text-arrow" href="./events.html">View all events <span aria-hidden="true">↗</span></a>
-<a class="text-arrow" data-calendar-public-link="" href="https://www.ijamiami.org/new-events-1" rel="noopener noreferrer" target="_blank">Official calendar <span aria-hidden="true">↗</span></a>
-</div>
-</div>
-</div>
-</section>
-<section aria-labelledby="services-title" class="services shell section-space" id="services">
-<div class="section-aside"><p class="overline">Care and guidance</p><h2 id="services-title">Here when<br/>it matters.</h2><p>Support for life's important moments.</p></div>
-<div class="service-list">
-<article class="service"><div><h3>Nikah &amp; marriage</h3><p>Religious marriage services and guidance on next steps.</p></div><a class="service-link" href="https://www.ijamiami.org/contact-us" rel="noopener noreferrer" target="_blank">Enquire <span aria-hidden="true">↗</span></a></article>
-<article class="service"><div><h3>Funeral &amp; burial</h3><p>Burial guidance, cemetery information and family assistance.</p><a class="urgent-link" href="tel:+17865542694">Urgent assistance: (786) 554-2694</a><a class="cemetery-service-link" href="./cemetery.html">Cemetery maps &amp; burial records <span aria-hidden="true">↗</span></a></div><a class="service-link" href="https://www.ijamiami.org/cemetery" rel="noopener noreferrer" target="_blank">Learn more <span aria-hidden="true">↗</span></a></article>
-<article class="service"><div><h3>Youth &amp; learning</h3><p>Faith, education and activities for families.</p></div><a class="service-link" href="https://www.ijamiami.org/contact-us" rel="noopener noreferrer" target="_blank">Contact IJA <span aria-hidden="true">↗</span></a></article>
-</div>
-</section>
-<section aria-labelledby="connect-title" class="connect shell section-space" id="connect">
-<div><p class="overline">Beyond the center</p><h2 id="connect-title">Stay connected.</h2><p>Watch majalis and lectures, and follow community announcements.</p></div>
-<div class="connect-links"><a href="https://www.youtube.com/results?search_query=IJA+Miami+Islamic+Jaffaria+Association" id="youtube-link" rel="noopener noreferrer" target="_blank">Find IJA on YouTube <span aria-hidden="true">↗</span></a><a href="https://www.facebook.com/p/Islamic-Jaffaria-Association-IJA-Miami-100064573394767/" id="facebook-link" rel="noopener noreferrer" target="_blank">Facebook <span aria-hidden="true">↗</span></a><a hidden="" href="#connect" id="instagram-link">Instagram <span aria-hidden="true">↗</span></a></div>
-</section>
-</main>
-<div id="site-footer"></div>
-<script src="./site-shell.js"></script>
-<script src="./prayer-times.js" defer></script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="hero" aria-labelledby="home-heading">
+      <div class="shell hero-inner">
+        <div class="hero-content">
+          <p class="overline">Islamic Jaffaria Association · South Florida</p>
+          <h1 id="home-heading">Our community,<br><span>in one place.</span></h1>
+          <p class="hero-subtitle">A home for faith, family and community in Miami.</p>
+          <div class="hero-links">
+            <a class="solid-button" href="./events.html">Explore events <span aria-hidden="true">↗</span></a>
+            <a class="quiet-link" href="./membership.html">Become a member <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="arch arch-outer"><div class="arch arch-middle"><div class="arch arch-inner"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- prayer-times.js inserts today's prayer times immediately after the hero.
+         The former redundant "Friday at IJA" strip is intentionally removed. -->
+
+    <section class="next-feature" aria-labelledby="next-event-label">
+      <div class="shell next-feature-inner" data-next-event>
+        <div class="next-feature-copy">
+          <p class="overline">Next community gathering</p>
+          <h2 id="next-event-label" data-next-title>Explore the community calendar</h2>
+          <p data-next-meta>Find upcoming programs and gatherings.</p>
+          <div class="next-feature-links">
+            <a href="./events.html">View all events <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="countdown-wrap" data-countdown-wrap hidden>
+          <span class="countdown-caption">Begins in</span>
+          <div class="countdown-line" data-countdown role="timer" aria-live="off" aria-label="Time to next event">—</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pathways shell section-space" id="pathways" aria-labelledby="pathways-heading">
+      <div class="section-aside">
+        <p class="overline">IJA Miami</p>
+        <h2 id="pathways-heading">How can we<br>help you?</h2>
+        <p>Find what you need, all in one place.</p>
+      </div>
+      <div class="pathway-list">
+        <a class="pathway" href="./events.html">
+          <span class="pathway-number">01</span>
+          <span class="pathway-copy"><strong>Events &amp; gatherings</strong><small>Programs, calendar and registrations</small></span>
+          <span class="pathway-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="pathway" href="./membership.html">
+          <span class="pathway-number">02</span>
+          <span class="pathway-copy"><strong>Annual membership</strong><small>Join or renew through Zeffy</small></span>
+          <span class="pathway-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="pathway" href="./cemetery.html">
+          <span class="pathway-number">03</span>
+          <span class="pathway-copy"><strong>Cemetery records &amp; maps</strong><small>Locations and burial records</small></span>
+          <span class="pathway-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="pathway" href="#services">
+          <span class="pathway-number">04</span>
+          <span class="pathway-copy"><strong>Community services</strong><small>Marriage, funerals and family support</small></span>
+          <span class="pathway-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section-alt" id="events" aria-labelledby="events-heading">
+      <div class="shell events-layout section-space">
+        <div class="section-aside">
+          <p class="overline">Community calendar</p>
+          <h2 id="events-heading">What's on at IJA</h2>
+          <p>Join us for worship, learning and time together.</p>
+        </div>
+        <div class="events-content">
+          <div class="event-feed" data-calendar-feed data-limit="3" aria-live="polite">
+            <div class="event-placeholder"><strong>Explore upcoming events</strong><p>See the latest programs in our community calendar.</p></div>
+          </div>
+          <div class="event-footer">
+            <a class="text-arrow" href="./events.html">View all events <span aria-hidden="true">↗</span></a>
+            <a class="text-arrow" data-calendar-public-link href="https://www.ijamiami.org/new-events-1" target="_blank" rel="noopener noreferrer">Full calendar <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services shell section-space" id="services" aria-labelledby="services-heading">
+      <div class="section-aside">
+        <p class="overline">Care &amp; guidance</p>
+        <h2 id="services-heading">Here when<br>it matters.</h2>
+        <p>Support for life's important moments.</p>
+      </div>
+      <div class="service-list">
+        <article class="service">
+          <div><h3>Nikah &amp; marriage</h3><p>Religious marriage services and guidance.</p></div>
+          <a class="service-link" href="https://www.ijamiami.org/contact-us" target="_blank" rel="noopener noreferrer">Enquire <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="service">
+          <div><h3>Funeral &amp; burial</h3><p>Funeral guidance and cemetery information.</p>
+            <a class="urgent-link" href="tel:+17865542694">Urgent assistance: (786) 554-2694</a>
+          </div>
+          <a class="service-link" href="./cemetery.html">Cemetery maps <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="service">
+          <div><h3>Youth &amp; learning</h3><p>Faith, education and activities for families.</p></div>
+          <a class="service-link" href="https://www.ijamiami.org/contact-us" target="_blank" rel="noopener noreferrer">Contact IJA <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="connect shell section-space" id="connect" aria-labelledby="connect-heading">
+      <div>
+        <p class="overline">Beyond the center</p>
+        <h2 id="connect-heading">Stay connected.</h2>
+        <p>Watch lectures and follow announcements from the community.</p>
+      </div>
+      <div class="connect-links">
+        <a id="youtube-link" href="https://www.youtube.com/results?search_query=IJA+Miami+Islamic+Jaffaria+Association" target="_blank" rel="noopener noreferrer">Find IJA on YouTube <span aria-hidden="true">↗</span></a>
+        <a id="facebook-link" href="https://www.facebook.com/p/Islamic-Jaffaria-Association-IJA-Miami-100064573394767/" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a>
+        <a id="instagram-link" href="#connect" hidden>Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="./site-shell.js"></script>
 </body>
 </html>
