@@ -1,7 +1,7 @@
 /* Network first for updates; offline fallback for previously visited pages. */
-const CACHE_NAME = 'ija-hub-v3-calendar-giving';
+const CACHE_NAME = 'ija-hub-v4-calendar-fix';
 const LOCAL_ASSETS = [
-  './','./index.html','./events.html','./donate.html','./events.json',
+  './','./index.html','./events.html','./donate.html',
   './styles.css','./app.js','./calendar.js','./fundraising.js','./config.js',
   './zeffy-thermometer.html','./manifest.webmanifest',
   './assets/ija-symbol.svg','./assets/ija-icon-192.png','./assets/ija-icon-512.png'
@@ -16,6 +16,11 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== location.origin) return;
+  // Never serve a pre-cached placeholder as a current event feed.
+  if (new URL(event.request.url).pathname.endsWith('/events.json')) {
+    event.respondWith(fetch(event.request, { cache: 'no-store' }));
+    return;
+  }
   event.respondWith(fetch(event.request).then(response => {
     if (response.ok) {
       const copy = response.clone();

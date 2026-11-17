@@ -7,6 +7,7 @@
   const tz = cfg.calendar?.timeZone || 'America/New_York';
   const fallbackCalendarUrl = 'https://www.ijamiami.org/new-events-1';
   const configuredCalendarUrl = cfg.calendar?.publicUrl;
+  const fallbackFrames = [...document.querySelectorAll('[data-calendar-fallback]')];
   for (const link of document.querySelectorAll('[data-calendar-public-link]')) {
     try {
       if (new URL(configuredCalendarUrl).protocol === 'https:') link.href = configuredCalendarUrl;
@@ -14,8 +15,8 @@
     } catch (_) { link.href = fallbackCalendarUrl; }
   }
   let upcoming = [];
-  let source = 'not_configured';
-  let previousNextId = null;
+  let source = 'unavailable';
+  let previousNextId = undefined;
 
   function formatDate(value, opts) {
     return new Intl.DateTimeFormat('en-US', {timeZone:tz, ...opts}).format(new Date(value));
@@ -26,7 +27,12 @@
     const box = document.createElement('div'); box.className = 'event-placeholder';
     const title = document.createElement('strong'); title.textContent = heading;
     const copy = document.createElement('p'); copy.textContent = description;
-    box.append(title, copy); container.append(box);
+    const link = document.createElement('a');
+    link.className = 'text-arrow';
+    link.textContent = 'Open the full calendar ↗';
+    link.href = (typeof configuredCalendarUrl === 'string' && configuredCalendarUrl.startsWith('https://calendar.google.com/')) ? configuredCalendarUrl : fallbackCalendarUrl;
+    link.target = '_blank'; link.rel = 'noopener noreferrer';
+    box.append(title, copy, link); container.append(box);
   }
   function addZeffyButton(container, label, type, preferredUrl = '') {
     const action = document.createElement('button'); action.type = 'button';
@@ -36,7 +42,6 @@
     container.append(action);
   }
   function renderEvent(container, item) {
-    const date = new Date(item.start);
     const article = document.createElement('article'); article.className = 'event-item';
     const row = document.createElement('div'); row.className = 'event-item-head';
     const when = document.createElement('div'); when.className = 'event-date';
@@ -60,34 +65,32 @@
     upcoming = upcoming.filter(event => new Date(event.start).getTime() >= now - 60000);
     containers.forEach(container => {
       container.replaceChildren();
-      if (source === 'not_configured') {
-        setEmpty(container,'Connect IJA Google Calendar','Events will appear automatically once the public calendar sync is activated.');
-        return;
-      }
-      if (source === 'error') {
-        setEmpty(container,'Calendar temporarily unavailable','Please use the official IJA calendar for the latest program information.');
+      if (source !== 'google_calendar') {
+        setEmpty(container,'Explore upcoming events','Open the IJA calendar to see the latest programs and gatherings.');
         return;
       }
       const visible = upcoming.filter(eventStartsInFuture).slice(0, Number(container.dataset.limit) || 3);
       if (!visible.length) {
-        setEmpty(container,'No upcoming events listed','Check the official calendar for announcements and updates.');
+        setEmpty(container,'No upcoming events listed','Check the full calendar for new announcements and updates.');
         return;
       }
       visible.forEach(event => renderEvent(container,event));
     });
+    fallbackFrames.forEach(frame => { frame.hidden = source === 'google_calendar'; });
   }
   function refreshNext() {
     const next = upcoming.find(eventStartsInFuture);
-    if ((next?.id || null) !== previousNextId) {
-      previousNextId = next?.id || null;
+    const nextId = next ? next.id + ':' + next.start : '__none__';
+    if (nextId !== previousNextId) {
+      previousNextId = nextId;
       nextPanels.forEach(panel => {
         const title = panel.querySelector('[data-next-title]');
         const meta = panel.querySelector('[data-next-meta]');
         const countdown = panel.querySelector('[data-countdown-wrap]');
         const sponsor = panel.querySelector('[data-next-sponsor]');
         if (!next) {
-          title.textContent = source === 'not_configured' ? 'Connect the IJA calendar' : 'See what is coming up';
-          meta.textContent = source === 'not_configured' ? 'IJA’s public Google Calendar will power this countdown.' : 'No upcoming event is currently listed. Explore the full calendar.';
+          title.textContent = 'Explore the community calendar';
+          meta.textContent = source === 'google_calendar' ? 'No upcoming event is listed. Check the calendar for updates.' : 'Find the latest programs and gatherings in IJA’s calendar.';
           countdown.hidden = true;
           if (sponsor) sponsor.dataset.zeffyUrl = '';
         } else {
@@ -117,14 +120,14 @@
       if (!response.ok) throw new Error('Unable to load public events JSON');
       const data = await response.json();
       if (!Array.isArray(data.events)) throw new Error('Invalid events payload');
-      source = data.source === 'google_calendar' ? 'google_calendar' : 'not_configured';
+      source = data.source === 'google_calendar' ? 'google_calendar' : 'unavailable';
       upcoming = data.events.filter(item => item && typeof item.title==='string' && typeof item.start==='string' && Number.isFinite(new Date(item.start).getTime()))
         .sort((a,b)=>new Date(a.start)-new Date(b.start));
-      previousNextId = null;
+      previousNextId = undefined;
       renderFeeds(); refreshNext();
     } catch (error) {
       // Preserve previously loaded events if a refresh fails.
-      if (!upcoming.length) { source = 'error'; renderFeeds(); refreshNext(); }
+      if (!upcoming.length) { source = 'unavailable'; renderFeeds(); refreshNext(); }
       console.warn('Public event calendar unavailable:',error.message);
     }
   }

@@ -269,3 +269,12 @@ h1,h2,h3 { text-wrap: balance; }
 }
 .campaign-intro button.quiet-link { border: 0; border-bottom: 1px solid var(--pine); background: transparent; padding: 0 0 5px; color: var(--pine); font: 700 13px/1.4 var(--sans); }
 .campaign-intro button.quiet-link:hover { color: #996f37; }
+
+/* Quiet fallback for a calendar feed that is not yet published. */
+.event-placeholder .text-arrow { display: inline-block; margin-top: 17px; }
+.calendar-embed-fallback { max-width: 780px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.calendar-embed-caption { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.calendar-embed-fallback iframe { display: block; width: 100%; min-height: 380px; border: 1px solid var(--line); background: var(--paper); }
+.calendar-embed-note { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+.calendar-embed-note a { color: var(--pine); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) { .calendar-embed-fallback iframe { min-height: 440px; } }

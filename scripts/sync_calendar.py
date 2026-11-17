@@ -23,6 +23,11 @@ OUTPUT = ROOT / 'events.json'
 ZONE = ZoneInfo('America/New_York')
 MAX_EVENTS = 30
 WINDOW_DAYS = 120
+PUBLIC_CALENDAR_URL = (
+    'https://calendar.google.com/calendar/ical/'
+    'c2bdc5ac65dee0cba9dd809cd9baf1e191b867f2b831e56256e4c596cd796a3d'
+    '@group.calendar.google.com/public/basic.ics'
+)  # Supplied public IJA calendar; a repository secret can override it.
 
 
 def validate_calendar_url(raw):
@@ -95,10 +100,7 @@ def extract_event(component):
 
 
 def main():
-    raw_url = os.environ.get('GOOGLE_CALENDAR_ICS_URL', '').strip()
-    if not raw_url:
-        print('GOOGLE_CALENDAR_ICS_URL is not set. Publishing with calendar connection pending.')
-        return
+    raw_url = os.environ.get('GOOGLE_CALENDAR_ICS_URL', '').strip() or PUBLIC_CALENDAR_URL
     url = validate_calendar_url(raw_url)
     request = Request(url, headers={'User-Agent': 'IJA-Miami-public-calendar-sync/1.0'})
     with urlopen(request, timeout=30) as response:
@@ -131,9 +133,6 @@ def main():
             previous = json.loads(OUTPUT.read_text(encoding='utf-8'))
         except (ValueError, OSError):
             pass
-    if previous and previous.get('source') == 'google_calendar' and previous.get('events') == events:
-        print('Calendar events unchanged; no commit necessary.')
-        return
     payload = {
         'source': 'google_calendar',
         'updatedAt': now.isoformat().replace('+00:00', 'Z'),
@@ -142,7 +141,31 @@ def main():
     }
     OUTPUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print(f'Synced {len(events)} public events to {OUTPUT.name}.')
+    summary = os.environ.get('GITHUB_STEP_SUMMARY')
+    if summary:
+        with open(summary, 'a', encoding='utf-8') as fh:
+            fh.write(f'### IJA Google Calendar\n\nSync succeeded: **{len(events)} public upcoming events**.\n\n')
+
+
+def safe_sync():
+    try:
+        main()
+    except Exception as error:
+        # Publish a visitor-friendly fallback, not setup instructions or invented events.
+        print(f'::warning title=Google Calendar sync failed::{type(error).__name__}: {error}')
+        payload = {
+            'source': 'unavailable',
+            'updatedAt': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
+            'timeZone': 'America/New_York',
+            'events': []
+        }
+        OUTPUT.write_text(json.dumps(payload, indent=2) + '\n', encoding='utf-8')
+        summary = os.environ.get('GITHUB_STEP_SUMMARY')
+        if summary:
+            with open(summary, 'a', encoding='utf-8') as fh:
+                fh.write('### IJA Google Calendar\n\n**Sync failed.** The site will show a link and Google Calendar preview instead of event cards.\n\n')
+                fh.write('Check public calendar visibility and the public iCal address. See the calendar-sync step log.\n\n')
 
 
 if __name__ == '__main__':
-    main()
+    safe_sync()

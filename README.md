@@ -112,3 +112,18 @@ For GitHub Actions, set the repository secret `GOOGLE_CALENDAR_ICS_URL` to:
 The provided Google Calendar link identifies the calendar but does not prove that the public iCal feed is accessible. In Google Calendar Settings and sharing, enable public event visibility for the dedicated IJA events calendar and confirm the public iCal feed works before deployment. Do not use a private/secret iCal address.
 
 Zeffy campaign URLs and the fundraising thermometer still need to be configured separately.
+
+## Calendar fix: if the published site still says “Connect the calendar”
+
+This package fixes the previous version's hard-coded setup text and provides a public Google Calendar fallback. If you still see the old phrase, **GitHub Pages is serving the older version**. Updating a GitHub Actions secret by itself does not publish any changed files.
+
+1. Upload **every file in this package**, including `.github/workflows/sync-calendar.yml`, to the root of the website repository. Check that `index.html` and the `.github` directory appear in the repository's file list. If you upload the ZIP through GitHub's website, extract it first.
+2. In **Settings → Pages**, choose **GitHub Actions** as the publishing source. Do not use “Deploy from a branch” for the calendar-enabled build.
+3. In **Actions → Publish IJA website and sync Google Calendar**, select **Run workflow**. Wait for a successful green deployment. Inspect the **Sync IJA public Google Calendar** step and the run summary. This package already knows IJA's supplied **public calendar ID**, so it can use the public ICS link even without a GitHub secret; any existing `GOOGLE_CALENDAR_ICS_URL` secret takes priority.
+4. Open `https://YOUR-USERNAME.github.io/YOUR-REPO/events.json` (use your actual Pages address). A working feed contains `"source": "google_calendar"` and an array of events. A value of `"source": "unavailable"` indicates the public Google Calendar feed was inaccessible and the site is using its fallback.
+5. In **Google Calendar → Settings and sharing → Access permissions for events**, confirm **Make available to public** with event details for this dedicated events calendar. Public ICS feeds only work for calendars shared publicly. Test the **public** iCal URL in a private browser window. Do not paste a personal calendar's private ICS link into a public repository.
+6. Refresh the site once after deployment. If you have it installed to your phone's home screen, close and reopen it. The new package changes the service worker cache identifier so the previous setup messages can be replaced.
+
+The browser cannot itself read Google's ICS URL reliably due to cross-origin restrictions. The GitHub Actions job does the conversion to `events.json`. **Without a successful published conversion, a live countdown cannot be calculated.** The Events page still offers the Google Calendar agenda embed and an external calendar link rather than displaying setup instructions.
+
+The fallback does not guarantee that a private Google Calendar will be visible to anonymous visitors. It must be public to function as a community website calendar.
