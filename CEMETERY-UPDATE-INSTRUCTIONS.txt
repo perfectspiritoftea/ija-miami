@@ -1,0 +1,13 @@
+IJA MIAMI - CEMETERY PAGE UPDATE
+
+This is an update for the existing IJA Miami GitHub Pages repository.
+
+Extract this ZIP and upload all of its contents to the root of your repository, including the hidden .github/workflows directory. The upload replaces index.html, events.html, donate.html, styles.css, service-worker.js, and the workflow, and adds cemetery.html.
+
+It does not replace config.js or events.json, so any public Zeffy form URLs already configured there are preserved. If you independently edited any of the replaced HTML/CSS files in GitHub, review those edits before uploading.
+
+The GitHub Pages workflow must include cemetery.html in the public directory. It does in the attached .github/workflows/sync-calendar.yml.
+
+After committing, run Actions > Publish IJA website and sync Google Calendar (or wait for the normal push trigger). Then open /cemetery.html on your published GitHub Pages site.
+
+Map and record data are loaded directly from IJA's existing cemetery portal https://ijacemetery.online/ . Full screen fallback remains available if embedding is blocked or unusable.

@@ -278,3 +278,36 @@ h1,h2,h3 { text-wrap: balance; }
 .calendar-embed-note { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
 .calendar-embed-note a { color: var(--pine); text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 760px) { .calendar-embed-fallback iframe { min-height: 440px; } }
+
+/* Cemetery records: clear wayfinding and room for an external interactive map. */
+.cemetery-hero .subpage-inner { padding-bottom: clamp(64px,8vw,96px); }
+.cemetery-hero h1 { max-width: 900px; }
+.cemetery-intro { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(34px,7vw,100px); align-items: start; }
+.cemetery-intro h2, .cemetery-embed-head h2, .cemetery-support h2 { font: 400 clamp(42px,4.6vw,62px)/1.07 var(--serif); letter-spacing: -.045em; margin: 0 0 20px; }
+.cemetery-intro-copy > p:last-child { color: var(--muted); font-size: 15px; line-height: 1.75; max-width: 480px; }
+.cemetery-sites { border-top: 1px solid var(--line); margin-top: 18px; }
+.cemetery-sites > div { display: grid; grid-template-columns: 48px 1fr; align-items: baseline; border-bottom: 1px solid var(--line); padding: 19px 0 20px; gap: 15px; }
+.cemetery-sites span { color: var(--muted); font-size: 11px; letter-spacing: .08em; }
+.cemetery-sites strong { font: 400 clamp(23px,2.4vw,32px)/1.22 var(--serif); letter-spacing: -.025em; }
+.cemetery-embed-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 28px; }
+.cemetery-embed-head h2 { margin-bottom: 0; max-width: 690px; }
+.cemetery-embed-head .text-arrow { white-space: nowrap; flex: none; margin-bottom: 7px; }
+.cemetery-frame-shell { border: 1px solid var(--line); background: white; min-height: 600px; overflow: hidden; }
+.cemetery-frame-shell iframe { display: block; width: 100%; height: clamp(600px,70vw,800px); min-height: 600px; border: 0; }
+.cemetery-map-footnote { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 16px 25px; padding-top: 19px; }
+.cemetery-map-footnote p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; max-width: 660px; }
+.cemetery-map-footnote a { flex: none; }
+.cemetery-support { background: var(--paper); }
+.cemetery-support-inner { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,.7fr); gap: clamp(35px,9vw,120px); align-items: center; }
+.cemetery-support-inner > div:first-child > p:last-child { color: var(--muted); max-width: 540px; font-size: 15px; line-height: 1.75; }
+.cemetery-support-actions { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+.cemetery-phone, .cemetery-contact { font-size: 14px; font-weight: 600; color: var(--pine); text-decoration: underline; text-underline-offset: 5px; }
+.cemetery-service-link { display: block; color: var(--pine); font-size: 12px; font-weight: 700; margin-top: 9px; text-decoration: underline; text-underline-offset: 4px; }
+@media(max-width: 760px) {
+  .cemetery-intro, .cemetery-support-inner { grid-template-columns: 1fr; gap: 26px; }
+  .cemetery-sites { margin-top: 0; }
+  .cemetery-embed-head { align-items: start; flex-direction: column; gap: 18px; }
+  .cemetery-frame-shell { min-height: 540px; }
+  .cemetery-frame-shell iframe { height: 650px; min-height: 540px; }
+  .cemetery-map-footnote { flex-direction: column; }
+}
