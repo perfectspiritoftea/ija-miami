@@ -21,3 +21,8 @@
 .cem-map-note a{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:850px){.cem-site{grid-template-columns:1fr;gap:12px}.cem-details{max-width:650px}.cem-site>a{justify-self:start}.cem-map iframe{height:540px}}
 @media(max-width:500px){.cem-hero{padding-top:57px;padding-bottom:43px}.cem-sites{padding-bottom:60px}.cem-site h2{font-size:28px}.cem-details{grid-template-columns:1fr;gap:14px}.cem-map{padding:55px 0}.cem-map-head{align-items:start;flex-direction:column}.cem-map iframe{height:520px}}
+
+/* Full-width cemetery portal: avoid narrow site shell and squeezed iframe. */
+.cem-map-fullwidth{width:100%;max-width:none;margin:0 auto;padding:0 clamp(12px,2vw,28px)}
+.cem-map-fullwidth iframe{display:block;width:100%;max-width:none;min-width:0;height:min(80vh,950px);min-height:620px;border:1px solid var(--line,#d8ddd6);background:#fff}
+@media(max-width:600px){.cem-map-fullwidth{padding:0 8px}.cem-map-fullwidth iframe{height:75vh;min-height:550px}}
