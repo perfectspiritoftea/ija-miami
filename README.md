@@ -1,52 +1,114 @@
-# IJA Miami Community Hub
+# IJA Miami | Community hub
 
-A mobile-first community website prototype for IJA Miami. Designed as a lightweight static site that can be published directly with GitHub Pages.
+A minimal, mobile-first community website for IJA Miami, with:
 
-## Publish with GitHub Pages
+- **Google Calendar:** automatically synced public events with a live countdown to the next event, a short list on the home page and a full Events page.
+- **Zeffy:** event-specific RSVP and sponsor links, donation/membership actions and a **native, live Zeffy fundraising thermometer** on the home and Donations pages.
+- **Community services:** marriage, burial/funeral assistance, youth/family services, social media and prayer links.
 
-1. Create a new GitHub repository named `ija-miami-website` (or another name). Make it **public** if using GitHub Free.
-2. Extract the `ija-miami-github-ready.zip` archive on your computer. **Upload the files INSIDE the extracted folder**, including `index.html`, `config.js`, `styles.css`, `app.js`, `manifest.webmanifest`, `service-worker.js`, the `assets` folder, and `.nojekyll`, to the **root** of your repository. Do **not** upload the ZIP alone.
-3. Commit the uploaded files on the `main` branch.
-4. Open **Settings > Pages** in the GitHub repository.
-5. Under **Build and deployment**, choose **Deploy from a branch**, then **main** and **/(root)**. Click **Save**.
-6. Once deployment finishes, open the site's **Visit site** link in Settings > Pages. For a repository named `ija-miami-website`, the default address will usually be `https://YOUR-USERNAME.github.io/ija-miami-website/`.
+This is a GitHub Pages-ready, static website. No build framework, custom server, database, Google API key or Zeffy API key is required. Personal donor data stays in Zeffy. The website only displays events intentionally published on a public Google Calendar.
 
-This website needs no build system or JavaScript framework. All resource links are relative, so it works on GitHub Pages project URLs.
+## 1. Upload to GitHub
 
-## Set up the real integrations before public launch
+1. Create a public GitHub repository, such as `ija-miami-website`, or open your existing site repository.
+2. Upload **all files and directories in this package to the repository root**, including the hidden `.github/workflows/sync-calendar.yml` file. In particular `index.html`, `events.html`, `donate.html`, `.github`, `assets`, `config.js` and `scripts` must be preserved. Do not upload the ZIP file itself.
+3. Commit the files to the `main` branch.
+4. Under **Settings > Pages > Build and deployment > Source**, select **GitHub Actions**. This replaces the older “Deploy from a branch” setting used for the first prototype. The packaged workflow publishes the site after each push and approximately every 30 minutes when scheduled runs execute.
+5. Go to the **Actions** tab, open **Publish IJA website and sync Google Calendar**, and click **Run workflow** for the first deploy. Its deployed URL appears in **Settings > Pages**.
 
-Edit `config.js` to insert **public** Zeffy campaign links for `membership`, `donation`, `sponsor`, and `eventRsvp`. In the same file, add verified official YouTube and Instagram links and confirmed upcoming events. Do not commit Zeffy API keys, donor lists or other private data.
+Important: **Do not continue using branch deployment** for the automated calendar. GitHub Actions creates the updated calendar file during publishing; branch deployment would show the placeholder `events.json`.
 
-The site links out to Zeffy forms; it does not process payments or read/write CRM records itself. Marriage and funeral enquiries link to existing IJA services rather than saving sensitive information in the public website.
+## 2. Connect the Google Calendar (no API keys)
 
-## What to review
+Use a dedicated calendar for **public IJA community events only**, not anyone's personal calendar.
 
-- Confirm organizational approval and all published addresses, phone numbers, Friday prayer times, and services.
-- Confirm the official social accounts and event details. The default YouTube action is a search link, not a verified official channel.
-- Confirm Zeffy forms work for the correct campaign, including registration receipts and sponsorship tiers.
-- Review the website on mobile and desktop before sharing the link.
-- GitHub Pages sites are public on the internet, even if the repository is private on a plan that allows private repositories.
+1. In Google Calendar on a computer, select the intended IJA calendar. Go to **Settings and sharing**.
+2. Under **Access permissions for events**, choose **Make available to public**, including event details. Only publish information suitable for everyone to read.
+3. Under **Integrate calendar**, copy **Public address in iCal format**. It should resemble `https://calendar.google.com/calendar/ical/.../public/basic.ics`. Do **not** use the private or secret iCal address.
+4. In your GitHub repository, go to **Settings > Secrets and variables > Actions > New repository secret**. Create a secret named exactly `GOOGLE_CALENDAR_ICS_URL`, with the full public `.ics` address as its value.
+5. Under **Actions**, run the packaged workflow again. The site will now show upcoming events, with a countdown that ticks every second. On the Events page, a longer list appears.
+6. Edit `config.js` and set `calendar.publicUrl` to the official **public calendar view URL** so people can open the full Google Calendar. This is different from the ICS feed URL. If omitted, the website uses the existing IJA events page as a fallback.
 
-## Local preview
+**How updates work:** GitHub Actions fetches the public Google Calendar at each deployment (roughly every 30 minutes; scheduled GitHub runs can be delayed), expands recurring events, and publishes `events.json` as part of the site. Browsers refresh the feed while open. The live countdown calculates time in the visitor’s browser using published event timestamps. Time formatting uses `America/New_York` for Miami, including daylight saving time.
 
-From the folder containing `index.html`, run:
+The `events.json` in the repository is initially a *connection pending* placeholder. The published workflow replaces it at deploy time after the secret is set. No calendar authentication is shipped to visitors.
 
-```bash
-python3 -m http.server 8000
+### Add RSVPs and event sponsorship in Google Calendar
+
+For each Google Calendar event, add these lines to its **description** (using the exact labels and a public Zeffy URL):
+
+```
+RSVP: https://www.zeffy.com/en-US/ticketing/YOUR-EVENT-RSVP-FORM
+SPONSOR: https://www.zeffy.com/en-US/ticketing/YOUR-EVENT-SPONSOR-FORM
 ```
 
-Open `http://localhost:8000` in your browser.
+The site displays **RSVP** and **Sponsor** next to each event. The event-specific links override generic fallback forms in `config.js`. If a link is missing, a generic form is used when configured; otherwise the button explains what needs to be connected. This applies to recurring event occurrences as well. Use distinct Zeffy forms or sponsorship tiers if you want separate event reports and sponsor tracking.
+
+The calendar parser limits event records to 30 upcoming events across a 120-day window, including recurring occurrences. The home page shows 3 and the Events page shows 15. Adjust the script if IJA needs more. Cancelled events are omitted.
+
+## 3. Connect Zeffy payments and native fundraising thermometer
+
+Edit `config.js`: add **public** Zeffy URLs for `zeffy.donation`, `zeffy.membership`, `zeffy.sponsor`, and optionally `zeffy.eventRsvp`.
+
+For the fundraising thermometer, **do not build a separate manually updated progress bar**. Zeffy's live thermometer is the source of truth and displays both the target and amount raised.
+
+1. In Zeffy open the donation or peer-to-peer campaign, edit it and set the **Fundraising goal**.
+2. On the campaign, choose **Share > More ways to share > Embed > Thermometer**. Copy Zeffy's exact native **Thermometer** embed HTML. If the option is unavailable, confirm your campaign is eligible and has a goal.
+3. Open `zeffy-thermometer.html`. Paste the native code between `START` and `END` comment markers. Commit the file.
+4. In `config.js`, set `zeffy.thermometerUseSnippet: true`.
+5. Republish. The exact Zeffy widget will appear on both the home page fundraising section and the Donations page. It is automatically updated by Zeffy. No goal or progress number is duplicated in site code.
+
+**Alternative:** If Zeffy provides a direct HTTPS iframe embed URL on `zeffy.com`, set `zeffy.thermometerEmbedUrl` to that URL and keep `thermometerUseSnippet: false`. The native HTML-snippet method is preferred because it preserves Zeffy's official embed requirements.
+
+For an optional **Live thermometer** page, set `zeffy.liveThermometerUrl` to Zeffy's published live campaign URL. This is a distinct page feature and may not be the same as a standalone thermometer embed.
+
+**Before connecting Zeffy:** visitors see a clearly labeled placeholder. The site does not invent a fundraising amount, goal, campaign or donor record.
+
+## 4. Final review before launch
+
+- Verify all contact numbers, prayer times, funeral/burial information and addresses against IJA's official sources.
+- Verify the official YouTube channel and Instagram handle before adding these in `config.js`.
+- Confirm the Google Calendar has only **public** events, with no confidential attendee data, and correctly handles recurring events and all-day events.
+- Confirm each Zeffy RSVP link, event sponsorship tier, donation campaign, and membership form is owned by IJA before adding it. Do not place private API keys, payment details or donor data in this repository.
+- Review the Donations page after embedding Zeffy's native snippet on mobile and desktop; Zeffy controls the widget's live appearance.
+- GitHub Pages deployments are public. Set your real IJA domain under **Settings > Pages > Custom domain** only after verifying the prototype.
 
 ## Files
 
-- `index.html`: page structure
-- `styles.css`: visual design and mobile layout
-- `app.js`: menu, Zeffy actions, and events display
-- `config.js`: public Zeffy links, social links, confirmed events
-- `assets/`: icons
-- `manifest.webmanifest`, `service-worker.js`: optional install-to-home-screen and offline support
-- `.nojekyll`: tells GitHub Pages to serve the files as-is
+| File | Purpose |
+| --- | --- |
+| `index.html` | Mobile-first home, next event, upcoming events, fundraising, services |
+| `events.html` | Full events list and countdown |
+| `donate.html` | Donations, native fundraising thermometer and giving options |
+| `config.js` | Public Zeffy links, social links, public calendar view URL |
+| `zeffy-thermometer.html` | Exact Zeffy-native embed snippet pasted by IJA |
+| `calendar.js` | Frontend events and live countdown |
+| `fundraising.js` | Zeffy-native thermometer frames |
+| `app.js` | Shared navigation and Zeffy link actions |
+| `scripts/sync_calendar.py` | Converts public Google Calendar ICS to event JSON |
+| `.github/workflows/sync-calendar.yml` | Scheduled calendar refresh and direct GitHub Pages deploy |
+| `events.json` | Initial placeholder; replaced in published artifact by GitHub Actions |
+| `styles.css`, `assets/` | Design system and icons |
+| `manifest.webmanifest`, `service-worker.js` | Install-to-home-screen and offline behavior |
 
-## Status
+## Preview locally
 
-Design prototype only. External integration links must be confirmed before launch. No live Zeffy transactions were tested. Visual design draws on Taste Skill, Hallmark, Impeccable and Vercel guidelines.
+Run `python3 -m http.server 8000` from the extracted folder and open `http://localhost:8000`.
+
+The local prototype has no live Google Calendar or Zeffy data until IJA provides the public calendar URL and campaign snippets. To test the calendar display locally, you can temporarily create sample entries in `events.json`. Do not commit invented events as if they were real.
+
+## Design rationale
+
+This revision retains the quieter, editorial IJA visual identity from the previous prototype. The calendar and fundraising sections have generous spacing, minimal interface chrome and direct calls to action. Taste Skill guides typography and hierarchy, Hallmark avoids stock AI-dashboard composition, Impeccable guides critique and Vercel web guidelines inform mobile usability.
+
+## IJA Calendar supplied November 2026
+
+The site public calendar link is now configured in `config.js`.
+
+For GitHub Actions, set the repository secret `GOOGLE_CALENDAR_ICS_URL` to:
+
+`https://calendar.google.com/calendar/ical/c2bdc5ac65dee0cba9dd809cd9baf1e191b867f2b831e56256e4c596cd796a3d@group.calendar.google.com/public/basic.ics`
+
+The provided Google Calendar link identifies the calendar but does not prove that the public iCal feed is accessible. In Google Calendar Settings and sharing, enable public event visibility for the dedicated IJA events calendar and confirm the public iCal feed works before deployment. Do not use a private/secret iCal address.
+
+Zeffy campaign URLs and the fundraising thermometer still need to be configured separately.
