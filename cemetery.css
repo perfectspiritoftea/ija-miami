@@ -1,0 +1,23 @@
+/* Cemetery page only. Uses the existing IJA global design tokens and site shell. */
+.cem-hero{padding-top:76px;padding-bottom:55px}
+.cem-hero h1{font:400 clamp(50px,6.5vw,83px)/1.02 var(--serif,Georgia,serif);letter-spacing:-.045em;margin:0 0 19px}
+.cem-hero h1 em{font-style:normal;color:var(--pine,#1d493d)}
+.cem-hero>p:last-child{color:var(--muted,#64736b);font-size:15px;max-width:560px;line-height:1.7}
+.cem-sites{padding-bottom:80px}
+.cem-site{border-top:1px solid var(--line,#d8ddd6);padding:25px 0;display:grid;grid-template-columns:minmax(170px,.72fr) minmax(0,1.65fr) auto;gap:28px;align-items:start}
+.cem-site:last-child{border-bottom:1px solid var(--line,#d8ddd6)}
+.cem-site h2{font:400 31px/1.15 var(--serif,Georgia,serif);letter-spacing:-.03em;margin:0}
+.cem-details{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.cem-label{display:block;font:700 10px/1.4 var(--sans,Arial,sans-serif);text-transform:uppercase;letter-spacing:.12em;color:var(--muted,#64736b);margin-bottom:7px}
+.cem-details p{font-size:13px;line-height:1.65;margin:0}
+.cem-details small{display:block;color:var(--muted,#64736b);font-size:11px;line-height:1.5;margin-top:7px;max-width:320px}
+.cem-site>a{font-size:12px;font-weight:700;border-bottom:1px solid currentColor;white-space:nowrap;padding-bottom:3px}
+.cem-map{background:#eeeee8;padding:74px 0 85px}
+.cem-map-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}
+.cem-map-head h2{font:400 clamp(37px,4.3vw,58px)/1.08 var(--serif,Georgia,serif);letter-spacing:-.04em;margin:0}
+.cem-map-head>a{font-size:13px;font-weight:700;border-bottom:1px solid currentColor;padding-bottom:4px;white-space:nowrap}
+.cem-map iframe{display:block;width:100%;height:650px;border:1px solid var(--line,#d8ddd6);background:#fff}
+.cem-map-note{font-size:12px;color:var(--muted,#64736b);margin:15px 0 0}
+.cem-map-note a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:850px){.cem-site{grid-template-columns:1fr;gap:12px}.cem-details{max-width:650px}.cem-site>a{justify-self:start}.cem-map iframe{height:540px}}
+@media(max-width:500px){.cem-hero{padding-top:57px;padding-bottom:43px}.cem-sites{padding-bottom:60px}.cem-site h2{font-size:28px}.cem-details{grid-template-columns:1fr;gap:14px}.cem-map{padding:55px 0}.cem-map-head{align-items:start;flex-direction:column}.cem-map iframe{height:520px}}

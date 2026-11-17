@@ -1,73 +1,53 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="#f8f7f2" name="theme-color"/>
-<meta content="Search IJA Miami cemetery burial records and interactive plot maps for Forest Lawn 1, Forest Lawn 3, Opa-Locka and Wadi-us-Salam." name="description"/>
-<meta content="IJA Miami | Cemetery records &amp; maps" property="og:title"/>
-<meta content="Find burial records, view cemetery plot maps, and learn about IJA funeral and burial services." property="og:description"/>
+<meta content="IJA Miami cemetery locations, visiting information, and searchable burial maps." name="description"/>
+<title>IJA Miami | Cemetery locations and maps</title>
 <link href="./assets/ija-symbol.svg" rel="icon" type="image/svg+xml"/>
-
-
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap" rel="stylesheet"/>
 <link href="./styles.css" rel="stylesheet"/>
+<link href="./cemetery.css" rel="stylesheet"/>
 <script defer="" src="./config.js"></script>
 <script defer="" src="./app.js"></script>
-<title>IJA Miami | Cemetery Records &amp; Maps</title>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div id="site-header"></div>
 <main id="main">
-<section aria-labelledby="cemetery-title" class="subpage-hero cemetery-hero">
-<div class="shell subpage-inner">
-<p class="overline">Cemetery records &amp; maps</p>
-<h1 id="cemetery-title">A place to<br/><em>remember.</em></h1>
-<p>Search burial records and explore IJA cemetery plot maps to locate and remember loved ones.</p>
-<a class="solid-button" href="https://ijacemetery.online/" rel="noopener noreferrer" target="_blank">Search burial records <span aria-hidden="true">↗</span></a>
+<section aria-labelledby="cem-title" class="cem-hero shell">
+<p class="overline">IJA Miami · Cemetery records</p>
+<h1 id="cem-title">Cemetery locations<br/><em>&amp; maps.</em></h1>
+<p>Find a cemetery, check visiting information, and locate a burial plot using the official IJA records map.</p>
+</section>
+<section aria-label="Cemetery locations and opening times" class="cem-sites shell">
+<div class="cem-site">
+<h2>Forest Lawn Memorial Gardens</h2>
+<div class="cem-details"><div><span class="cem-label">Address</span><p>Forest Lawn Memorial Gardens Central, 499 NW 27th Avenue, Fort Lauderdale, FL 33311</p></div><div><span class="cem-label">Visiting hours</span><p>Confirm with cemetery before visiting</p></div></div>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=499+NW+27th+Ave+Fort+Lauderdale+FL+33311" rel="noopener noreferrer" target="_blank">Directions ↗</a>
+<p class="cem-areas"><strong>IJA sections:</strong> Forest Lawn 1 · Forest Lawn 3 · Opa-Locka</p></div>
+
+
+<div class="cem-site">
+<h2>Wadi-us-Salam <small>(Vista Memorial Gardens)</small></h2>
+<div class="cem-details"><div><span class="cem-label">Address</span><p>Vista Memorial Gardens<br/>14200 NW 57th Ave<br/>Miami Lakes, FL 33014</p></div><div><span class="cem-label">Visiting hours</span><p>Grounds: daily, 9 AM–5 PM</p><small>Office: Monday–Saturday, 9 AM–3 PM</small></div></div>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Vista+Memorial+Gardens+14200+NW+57th+Ave+Miami+Lakes+FL+33014" rel="noopener noreferrer" target="_blank">Directions ↗</a>
 </div>
 </section>
-<section aria-labelledby="cemetery-sites-title" class="cemetery-intro shell section-space">
-<div class="cemetery-intro-copy">
-<p class="overline">In the IJA cemetery directory</p>
-<h2 id="cemetery-sites-title">Four cemetery maps.<br/>One place to search.</h2>
-<p>Use the Search tab to find a name. On a cemetery map, select a plot to view its available burial record and headstone photograph.</p>
-</div>
-<div aria-label="Cemeteries included in the records directory" class="cemetery-sites">
-<div><span>01</span><strong>Forest Lawn 1</strong></div>
-<div><span>02</span><strong>Forest Lawn 3</strong></div>
-<div><span>03</span><strong>Opa-Locka</strong></div>
-<div><span>04</span><strong>Wadi-us-Salam</strong></div>
-</div>
-</section>
-<section aria-labelledby="cemetery-map-title" class="cemetery-records section-alt">
-<div class="shell section-space">
-<div class="cemetery-embed-head">
-<div><p class="overline">Official IJA burial records</p><h2 id="cemetery-map-title">Explore the records &amp; plot maps.</h2></div>
-<a class="text-arrow" href="https://ijacemetery.online/" rel="noopener noreferrer" target="_blank">Open full screen <span aria-hidden="true">↗</span></a>
-</div>
-<div class="cemetery-frame-shell">
-<iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://ijacemetery.online/?embed=1" title="IJA searchable cemetery records and interactive plot maps"></iframe>
-</div>
-<div class="cemetery-map-footnote">
-<p>Records and maps are provided by the existing IJA cemetery directory. On a phone, the full-screen view may be easier to use.</p>
-<a class="text-arrow" href="https://www.ijamiami.org/cemetery-records" rel="noopener noreferrer" target="_blank">View on the official IJA website <span aria-hidden="true">↗</span></a>
-</div>
-</div>
-</section>
-<section aria-labelledby="cemetery-support-title" class="cemetery-support">
-<div class="shell cemetery-support-inner section-space">
-<div><p class="overline">Funeral &amp; burial services</p><h2 id="cemetery-support-title">Here when you need guidance.</h2><p>For funeral arrangements, cemetery plot enquiries, or questions about burial services, contact IJA directly.</p></div>
-<div class="cemetery-support-actions">
-<a class="solid-button" href="https://www.ijamiami.org/cemetery" rel="noopener noreferrer" target="_blank">Funeral &amp; burial information <span aria-hidden="true">↗</span></a>
-<a class="cemetery-phone" href="tel:+17865542694">Funeral assistance: (786) 554-2694</a>
-<a class="cemetery-contact" href="https://www.ijamiami.org/contact-us" rel="noopener noreferrer" target="_blank">Contact IJA <span aria-hidden="true">↗</span></a>
-</div>
+<section aria-labelledby="cem-map-title" class="cem-map">
+<div class="shell">
+<div class="cem-map-head"><div><p class="overline">Burial records</p><h2 id="cem-map-title">Find a resting place.</h2></div><a href="https://ijacemetery.online/" rel="noopener noreferrer" target="_blank">Open full-screen map ↗</a></div>
+<iframe loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://ijacemetery.online/?embed=1" title="IJA burial records and cemetery plot maps"></iframe>
+<p class="cem-map-note">If the embedded map does not load, <a href="https://ijacemetery.online/" rel="noopener noreferrer" target="_blank">open the official cemetery records portal</a>.</p>
 </div>
 </section>
 </main>
 <div id="site-footer"></div>
-<script src="./site-shell.js"></script></body></html>
+<script src="./site-shell.js"></script>
+</body>
+</html>
