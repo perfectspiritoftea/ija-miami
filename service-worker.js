@@ -1,9 +1,9 @@
 /* Network first for updates; offline fallback for previously visited pages. */
-const CACHE_NAME = 'ija-hub-v5-cemetery-records';
+const CACHE_NAME = 'ija-hub-v6-membership';
 const LOCAL_ASSETS = [
-  './','./index.html','./events.html','./donate.html','./cemetery.html',
-  './styles.css','./app.js','./calendar.js','./fundraising.js','./config.js',
-  './zeffy-thermometer.html','./manifest.webmanifest',
+  './','./index.html','./events.html','./donate.html','./cemetery.html','./membership.html',
+  './styles.css','./app.js','./calendar.js','./config.js',
+  './manifest.webmanifest',
   './assets/ija-symbol.svg','./assets/ija-icon-192.png','./assets/ija-icon-512.png'
 ];
 self.addEventListener('install', event => {

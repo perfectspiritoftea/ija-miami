@@ -1,4 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -15,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
 <link href="./styles.css" rel="stylesheet"/>
 <script defer="" src="./config.js"></script>
-<script defer="" src="./app.js"></script><script defer="True" src="./calendar.js"></script><script defer="True" src="./fundraising.js"></script>
+<script defer="" src="./app.js"></script><script defer="True" src="./calendar.js"></script>
 <title>IJA Miami | Our community, in one place</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
 <svg aria-hidden="true" height="34" viewbox="0 0 44 44" width="34"><path d="M22 3 28 16 41 22 28 28 22 41 16 28 3 22 16 16Z" fill="none" stroke="currentColor" stroke-width="1.3"></path><path d="M22 11 26 18 33 22 26 26 22 33 18 26 11 22 18 18Z" fill="currentColor"></path></svg>
 <span class="brand-wordmark"><strong>IJA</strong><small>MIAMI</small></span>
 </a>
-<nav aria-label="Main navigation" class="desktop-nav"><a href="./events.html">Events</a><a href="./index.html#services">Services</a><a href="./cemetery.html">Cemetery</a><a href="./donate.html">Donations</a></nav>
+<nav aria-label="Main navigation" class="desktop-nav"><a href="./events.html">Events</a><a href="./index.html#services">Services</a><a href="./cemetery.html">Cemetery</a><a href="./donate.html">Donations</a><a href="./membership.html">Membership</a></nav>
 <div class="header-side">
 <a class="header-give" href="./donate.html">Give to IJA <span aria-hidden="true">↗</span></a>
 <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle" id="menu-toggle" type="button"><span></span><span></span></button>
@@ -39,7 +40,7 @@
 <a href="./index.html#services">Community services</a>
 <a href="./cemetery.html">Cemetery records &amp; maps</a>
 <a href="https://www.ijamiami.org/contact-us" rel="noopener noreferrer" target="_blank">Contact the center</a>
-</nav>
+<a href="./membership.html">Membership</a></nav>
 </header>
 <main id="main">
 <section aria-labelledby="hero-title" class="hero">
@@ -50,7 +51,7 @@
 <p class="hero-subtitle">Prayer, community events and care for Miami’s Shia Muslim families.</p>
 <div class="hero-links">
 <a class="solid-button" href="./events.html">Explore events <span aria-hidden="true">↗</span></a>
-<a class="quiet-link" href="./donate.html">Support IJA <span aria-hidden="true">↗</span></a>
+<a class="quiet-link" href="./membership.html">Become a member ↗</a>
 </div>
 </div>
 <div aria-hidden="true" class="hero-art"><div class="arch arch-outer"><div class="arch arch-middle"><div class="arch arch-inner"></div></div></div></div>
@@ -68,7 +69,7 @@
 <h2 data-next-title="" id="next-event-label">Upcoming events at IJA</h2>
 <p data-next-meta="">Explore the full calendar for our next community program.</p>
 <div class="next-feature-links"><a href="./events.html">See all events <span aria-hidden="true">↗</span></a>
-<button data-next-sponsor="" data-zeffy="sponsor" type="button">Sponsor an event <span aria-hidden="true">↗</span></button>
+
 </div>
 </div>
 <div class="countdown-wrap" data-countdown-wrap="" hidden="">
@@ -81,8 +82,8 @@
 <div class="section-aside"><p class="overline">Welcome</p><h2 id="pathways-title">How can we<br/>help you?</h2><p>Find what you need without searching through pages.</p></div>
 <div class="pathway-list">
 <a class="pathway" href="./events.html"><span class="pathway-number">01</span><span class="pathway-copy"><strong>Events &amp; gatherings</strong><small>Programs, calendars and RSVPs</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
-<button class="pathway" data-zeffy="membership" type="button"><span class="pathway-number">02</span><span class="pathway-copy"><strong>Become a member</strong><small>Join or renew through Zeffy</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></button>
-<a class="pathway" href="./donate.html"><span class="pathway-number">03</span><span class="pathway-copy"><strong>Donations &amp; fundraising</strong><small>Give or sponsor through Zeffy</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
+<a class="pathway" href="./membership.html"><span class="pathway-number">02</span><span class="pathway-copy"><strong>Become a member</strong><small>Join or renew through Zeffy</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
+<a class="pathway" href="./cemetery.html"><span class="pathway-number">03</span><span class="pathway-copy"><strong>Cemetery records &amp; maps</strong><small>Find burial records and cemetery maps</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
 <a class="pathway" href="#services"><span class="pathway-number">04</span><span class="pathway-copy"><strong>Community services</strong><small>Marriage, funerals and family support</small></span><span aria-hidden="true" class="pathway-arrow">↗</span></a>
 </div>
 </section>
@@ -91,7 +92,7 @@
 <div class="section-aside"><p class="overline">Google Calendar</p><h2 id="events-title">Coming together.</h2><p>See what is planned and reserve a place at upcoming programs.</p></div>
 <div class="events-content">
 <div aria-live="polite" class="event-feed" data-calendar-feed="" data-limit="3">
-<div class="event-placeholder"><strong>Explore upcoming events</strong><p>See the latest schedule in the IJA community calendar.</p><a class="text-arrow" href="https://calendar.google.com/calendar/u/0?cid=YzJiZGM1YWM2NWRlZTBjYmE5ZGQ4MDljZDliYWYxZTE5MWI4NjdmMmI4MzFlNTYyNTZlNGM1OTZjZDc5NmEzZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener noreferrer">Open calendar ↗</a></div>
+<div class="event-placeholder"><strong>Explore upcoming events</strong><p>See the latest schedule in the IJA community calendar.</p><a class="text-arrow" href="https://calendar.google.com/calendar/u/0?cid=YzJiZGM1YWM2NWRlZTBjYmE5ZGQ4MDljZDliYWYxZTE5MWI4NjdmMmI4MzFlNTYyNTZlNGM1OTZjZDc5NmEzZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" rel="noopener noreferrer" target="_blank">Open calendar ↗</a></div>
 </div>
 <div class="event-footer"><a class="text-arrow" href="./events.html">View all events <span aria-hidden="true">↗</span></a>
 <a class="text-arrow" data-calendar-public-link="" href="https://www.ijamiami.org/new-events-1" rel="noopener noreferrer" target="_blank">Official calendar <span aria-hidden="true">↗</span></a>
@@ -107,18 +108,7 @@
 <article class="service"><div><h3>Youth &amp; learning</h3><p>Faith, education and activities for families.</p></div><a class="service-link" href="https://www.ijamiami.org/contact-us" rel="noopener noreferrer" target="_blank">Contact IJA <span aria-hidden="true">↗</span></a></article>
 </div>
 </section>
-<section aria-labelledby="support-title" class="fundraising-preview" id="support">
-<div class="shell fundraising-layout section-space">
-<div class="support-intro"><p class="overline">Fundraising</p><h2 id="support-title">Care for the community. Together.</h2><p>Help sustain the programs, education and support that bring us together.</p>
-<a class="solid-button" href="./donate.html">Explore giving <span aria-hidden="true">↗</span></a>
-</div>
-<div aria-label="Zeffy fundraising progress" class="thermometer-panel" data-thermometer="" data-thermometer-context="home">
-<p class="embed-kicker">Campaign progress · powered by Zeffy</p>
-<div class="thermometer-placeholder"><strong>Our fundraising progress will appear here.</strong><p>Connect IJA's Zeffy goal thermometer to show the live amount raised and campaign target.</p></div>
-<button class="inline-link" data-zeffy="donation" type="button">Give through Zeffy <span aria-hidden="true">↗</span></button>
-</div>
-</div>
-</section>
+
 <section aria-labelledby="connect-title" class="connect shell section-space" id="connect">
 <div><p class="overline">Beyond the center</p><h2 id="connect-title">Stay connected.</h2><p>Watch majalis and lectures, and follow community announcements.</p></div>
 <div class="connect-links"><a href="https://www.youtube.com/results?search_query=IJA+Miami+Islamic+Jaffaria+Association" id="youtube-link" rel="noopener noreferrer" target="_blank">Find IJA on YouTube <span aria-hidden="true">↗</span></a><a href="https://www.facebook.com/p/Islamic-Jaffaria-Association-IJA-Miami-100064573394767/" id="facebook-link" rel="noopener noreferrer" target="_blank">Facebook <span aria-hidden="true">↗</span></a><a hidden="" href="#connect" id="instagram-link">Instagram <span aria-hidden="true">↗</span></a></div>
@@ -126,14 +116,8 @@
 </main>
 <footer class="site-footer">
 <div class="shell footer-inner"><div><strong class="footer-brand">IJA MIAMI</strong><p>10554 NW 132nd Street<br/>Hialeah Gardens, FL 33018</p></div><div class="footer-links"><a href="https://www.google.com/maps/search/?api=1&amp;query=10554+NW+132nd+St+Hialeah+Gardens+FL+33018" rel="noopener noreferrer" target="_blank">Directions ↗</a><a href="tel:+13055576835">(305) 557-6835</a><a href="./cemetery.html">Cemetery records &amp; maps ↗</a><a href="https://www.ijamiami.org/contact-us" rel="noopener noreferrer" target="_blank">Contact us ↗</a></div></div>
-<div class="shell footer-bottom"><span>© <span id="copyright-year">Community calendar via Google · Giving via Zeffy</span> Islamic Jaffaria Association Miami</span><span>Google Calendar events · Zeffy-powered giving</span></div>
+<div class="shell footer-bottom"><span>© <span id="copyright-year">Community calendar via Google · Membership via Zeffy</span> Islamic Jaffaria Association Miami</span><span>Google Calendar events · Membership through Zeffy</span></div>
 </footer>
-<div class="dialog-backdrop" hidden="" id="zeffy-dialog">
-<div aria-describedby="dialog-description" aria-labelledby="dialog-title" aria-modal="true" class="dialog-panel" role="dialog">
-<button aria-label="Close dialog" class="dialog-close" id="dialog-close" type="button">×</button>
-<p class="overline">IJA · Zeffy setup</p><h2 id="dialog-title">Link not connected</h2><p id="dialog-description">The Zeffy link for this action is not connected in this preview.</p><p class="dialog-instructions">Add IJA's public campaign URL to <code>config.js</code> to activate this action. Do not add private API credentials.</p>
-<button class="solid-button" id="dialog-done" type="button">Back to IJA <span aria-hidden="true">↗</span></button>
-</div>
-</div>
+
 </body>
 </html>

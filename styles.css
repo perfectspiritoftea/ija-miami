@@ -311,3 +311,6 @@ h1,h2,h3 { text-wrap: balance; }
   .cemetery-frame-shell iframe { height: 650px; min-height: 540px; }
   .cemetery-map-footnote { flex-direction: column; }
 }
+
+/* Annual membership form */
+.membership-section{max-width:900px;margin-inline:auto}.membership-intro{max-width:650px;margin-bottom:2rem}.membership-zeffy-form{min-height:450px}.membership-fallback-link{margin-top:1rem;font-size:.95rem}.membership-fallback-link a{text-decoration:underline;text-underline-offset:3px}

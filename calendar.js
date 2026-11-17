@@ -35,10 +35,11 @@
     box.append(title, copy, link); container.append(box);
   }
   function addZeffyButton(container, label, type, preferredUrl = '') {
+    if (!window.IJA?.isZeffyUrl?.(preferredUrl)) return;
     const action = document.createElement('button'); action.type = 'button';
     action.textContent = label + ' ↗';
     action.dataset.zeffy = type;
-    if (window.IJA?.isZeffyUrl?.(preferredUrl)) action.dataset.zeffyUrl = preferredUrl;
+    action.dataset.zeffyUrl = preferredUrl;
     container.append(action);
   }
   function renderEvent(container, item) {
