@@ -39,7 +39,7 @@ jobs:
           cp styles.css app.js calendar.js fundraising.js config.js events.json public/
           cp zeffy-thermometer.html manifest.webmanifest service-worker.js public/
           cp -R assets public/assets
-          cp .nojekyll public/.nojekyll
+          touch public/.nojekyll
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
